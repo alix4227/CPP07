@@ -1,17 +1,13 @@
 #include "iter.hpp"
-void print(const char& str, const int len)
-{
-	int i =  0;
-	while (i < len)
-	{
-		std::cout << str << std::endl;
-		i++;
-	}
-}
+
 
 int main(void) 
 {
-	const char* str = "0123";
-	iter<const char, const int>(str, strlen(str), print);
+	char str[] = "0123";
+	iter(str, 4, print);
+	int string[] = {1, 2, 3};
+	iter(string, 3, print);
+	std::string s = "Lechat";
+	iter(&s, 1, print);
 	return (0);
 }
