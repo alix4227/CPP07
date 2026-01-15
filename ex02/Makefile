@@ -9,6 +9,7 @@ NAME		= array
 
 # source files
 SRCS	= main.cpp\
+			Array.cpp
 
 # object files
 OBJS	= ${SRCS:.cpp=.o}

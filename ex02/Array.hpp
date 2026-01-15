@@ -3,15 +3,20 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
+#include <cstring>
 
 template <typename T>
 class Array
 {
 	public:
-	Array();
-	Array(unsigned int n);
-	~Array();
-	Array(Array const& src);
+	Array(){_str[0] = 0;}
+	Array(unsigned int n)
+	{
+		T* _str = new T[n]();
+		(void)_str;
+	}
+	~Array(){}
+	Array(Array const& src){*this = src;}
 	Array& operator=(Array const& src);
 	T& operator[](int i);
 	int size()const;
@@ -23,32 +28,22 @@ class Array
 };
 
 template <typename T>
-Array<T>::Array()
-{
-	_str[0] = 0;
-}
-
-template <typename T>
-Array<T>::Array(unsigned int n)
-{
-	T* _str = new T[n]();
-}
-
-template <typename T>
-Array<T>::Array(Array const& src)
-{
-	*this = src;
-}
-
-template <typename T>
 int Array<T>::size() const
 {
 	int i = 0;
-	// if (T == std::string)
-	// 	return (_str.size());
-	// else if (T == int)
-	while (_str[i])
+	if (T == std::string)
+		return (_str.size());
+	else if (T == int)
+	{
+		int size = sizeof(_str) / sizeof(_str[0]);
+		return (size);
+	}
+	else
+	{
+		while (i < strlen(_str))
 		i++;
+		return (i);
+	}
 	return (i);
 }
 
@@ -76,11 +71,4 @@ Array<T>& Array<T>::operator=(Array<T> const& src)
 	}
 	return (*this);
 }
-
-template <typename T>
-Array<T>::~Array()
-{
-
-}
-
 #endif
