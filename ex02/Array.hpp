@@ -9,49 +9,45 @@ template <typename T>
 class Array
 {
 	public:
-	Array(){_str[0] = 0;}
+	Array()
+	{
+		_str = NULL;
+		_size = 0;
+	}
 	Array(unsigned int n)
 	{
-		T* _str = new T[n]();
-		(void)_str;
+		_str = new T[n]();
+		_size = n;
 	}
-	~Array(){}
-	Array(Array const& src){*this = src;}
+	~Array()
+	{
+		delete [] _str;
+	}
+	Array(Array const& src)
+	{
+		*this = src;
+	}
 	Array& operator=(Array const& src);
 	T& operator[](int i);
-	int size()const;
+	unsigned int size() const
+	{
+		return (_size);
+	}
 	
 	private:
 	T* _str;
-
-
+	unsigned int _size;
 };
 
-template <typename T>
-int Array<T>::size() const
-{
-	int i = 0;
-	if (T == std::string)
-		return (_str.size());
-	else if (T == int)
-	{
-		int size = sizeof(_str) / sizeof(_str[0]);
-		return (size);
-	}
-	else
-	{
-		while (i < strlen(_str))
-		i++;
-		return (i);
-	}
-	return (i);
-}
 
 template <typename T>
 T& Array<T>::operator[](int i)
 {
-	if ( i < 0 || i >= this->size())
-		throw(std::exception());
+	int strlen = static_cast<int>(size());
+	if (i < 0)
+		throw std::invalid_argument("Index négatif non accepté");
+	if (i >= strlen)
+		throw std::runtime_error("Index hors limites");
 	return (_str[i]);
 }
 
