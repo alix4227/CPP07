@@ -9,7 +9,7 @@ void iter(T* str, const int len, void (*f)(T const&))
 	int i = 0;
 	while (i < len)
 	{
-		(*f)(str[i]);
+		f(str[i]);
 		i++;
 	}
 }

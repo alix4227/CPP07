@@ -8,8 +8,8 @@ CFLAGS		= -Wall -Wextra -Werror -std=c++98 -g
 NAME		= array
 
 # source files
-SRCS	= main.cpp\
-			Array.cpp
+SRCS	= main.cpp
+			
 
 # object files
 OBJS	= ${SRCS:.cpp=.o}

@@ -1,11 +1,11 @@
 #include "Array.hpp"
 #include <ctime>
 
-#define MAX_VAL 750
+#define MAX_VAL 3
 int main()
 {
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
+    Array<std::string> numbers(MAX_VAL);
+    std::string* mirror = new std::string[MAX_VAL];
     srand(time(NULL));
     for (int i = 0; i < MAX_VAL; i++)
     {
@@ -13,11 +13,11 @@ int main()
         numbers[i] = value;
         mirror[i] = value;
     }
-    // //SCOPE
-    // {
-    //     Array<int> tmp = numbers;
-    //     Array<int> test(tmp);
-    // }
+    //SCOPE
+    {
+        Array<std::string> tmp = numbers;
+        Array<std::string> test(tmp);
+    }
 
     for (int i = 0; i < MAX_VAL; i++)
     {
@@ -29,7 +29,7 @@ int main()
     }
     try
     {
-        numbers[-2] = 0;
+        numbers[-2] = "0";
     }
     catch(const std::exception& e)
     {
@@ -37,7 +37,7 @@ int main()
     }
     try
     {
-        numbers[MAX_VAL] = 0;
+        numbers[MAX_VAL] = "0";
     }
     catch(const std::exception& e)
     {

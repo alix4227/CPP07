@@ -8,8 +8,7 @@ CFLAGS		= -Wall -Wextra -Werror -std=c++98 -g
 NAME		= whatever
 
 # source files
-SRCS	= whatever.cpp\
-		  main.cpp
+SRCS	= main.cpp
 
 # object files
 OBJS	= ${SRCS:.cpp=.o}

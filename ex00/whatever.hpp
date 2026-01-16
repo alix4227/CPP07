@@ -3,15 +3,6 @@
 #include <iostream>
 #include <string>
 
-class Whatever
-{
-	public:
-	Whatever();
-	~Whatever();
-	Whatever(Whatever const& src);
-	Whatever& operator=(Whatever const& src);
-};
-
 template <typename T>
 T max(T a, T b)
 {
